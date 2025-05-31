@@ -51,6 +51,11 @@ android {
         versionName flutterVersionName
         multiDexEnabled true
     }
+    
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libjsc.so'
+    }
 
     buildTypes {
         release {
