@@ -3,6 +3,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'screens/markdown_screenshot_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MarkdownScreenshotApp());
 }
 
@@ -38,10 +39,16 @@ class _PermissionWrapperState extends State<PermissionWrapper> {
   }
 
   Future<void> _requestPermissions() async {
-    await [
-      Permission.storage,
-      Permission.manageExternalStorage,
-    ].request();
+    try {
+      final statuses = await [
+        Permission.storage,
+        Permission.manageExternalStorage,
+      ].request();
+      
+      print('Permission statuses: $statuses');
+    } catch (e) {
+      print('Error requesting permissions: $e');
+    }
   }
 
   @override
