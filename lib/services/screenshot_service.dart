@@ -65,7 +65,6 @@ class ScreenshotService {
       final uint8List = await _screenshotController.captureFromWidget(
         screenshotWidget,
         pixelRatio: pixelRatio,
-        context: null,
       );
 
       if (uint8List.isEmpty) {
@@ -264,7 +263,6 @@ class ScreenshotService {
       final recoveredScreenshot = await _screenshotController.captureFromWidget(
         recoveryWidget,
         pixelRatio: adjustedPixelRatio,
-        context: null,
       );
 
       return recoveredScreenshot.isNotEmpty ? recoveredScreenshot : null;
